@@ -1,0 +1,1008 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.5"
+    />
+    <title>OrangeStyle - Tokopedia Pakaian Oranye</title>
+    <!-- Font & Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #fff8f0;
+        color: #3a2c1b;
+        line-height: 1.5;
+      }
+
+      :root {
+        --orange-primary: #e67e22;
+        --orange-secondary: #d35400;
+        --orange-soft: #ffeed9;
+        --orange-light: #ffe5cc;
+        --orange-pale: #fff2e6;
+        --orange-dark: #b85e1a;
+        --gray-soft: #fef7f0;
+        --text-dark: #4a3a22;
+        --text-gray: #6b5a42;
+        --border-light: #ffe0c4;
+        --shadow: 0 2px 8px rgba(230, 126, 34, 0.06);
+      }
+
+      /* Layout utama seperti Tokopedia */
+      .container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header ala Tokopedia oranye */
+      .top-header {
+        background-color: white;
+        border-bottom: 1px solid var(--border-light);
+        padding: 8px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: var(--shadow);
+      }
+
+      .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .logo-area {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .logo-icon {
+        background: var(--orange-primary);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        font-weight: 700;
+      }
+
+      .logo-text {
+        font-weight: 800;
+        font-size: 1.6rem;
+        color: var(--orange-dark);
+        letter-spacing: -0.5px;
+      }
+
+      .logo-text span {
+        color: var(--orange-secondary);
+        font-weight: 400;
+      }
+
+      /* Search bar ala marketplace */
+      .search-wrapper {
+        flex: 1;
+        max-width: 600px;
+        margin: 0 20px;
+      }
+
+      .search-box {
+        display: flex;
+        align-items: center;
+        background: white;
+        border: 2px solid var(--orange-light);
+        border-radius: 60px;
+        padding: 4px 4px 4px 20px;
+        transition: 0.2s;
+        box-shadow: 0 2px 6px rgba(230, 126, 34, 0.04);
+      }
+
+      .search-box:focus-within {
+        border-color: var(--orange-primary);
+        box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1);
+      }
+
+      .search-box input {
+        width: 100%;
+        border: none;
+        padding: 14px 0;
+        font-size: 1rem;
+        background: transparent;
+        outline: none;
+      }
+
+      .search-box button {
+        background: var(--orange-primary);
+        border: none;
+        border-radius: 50px;
+        padding: 12px 28px;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+      }
+
+      .search-box button:hover {
+        background: var(--orange-secondary);
+      }
+
+      /* Ikon user/keranjang */
+      .user-actions {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .action-icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--text-gray);
+        font-size: 0.8rem;
+        transition: 0.2s;
+        cursor: pointer;
+      }
+
+      .action-icon i {
+        font-size: 1.4rem;
+        margin-bottom: 4px;
+        color: var(--orange-dark);
+      }
+
+      .action-icon:hover {
+        color: var(--orange-primary);
+      }
+
+      /* Kategori navigasi */
+      .nav-categories {
+        background: white;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--border-light);
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: thin;
+      }
+
+      .category-list {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+      }
+
+      .category-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--text-gray);
+        font-weight: 600;
+        font-size: 0.85rem;
+        transition: 0.2s;
+        cursor: pointer;
+        min-width: 60px;
+      }
+
+      .category-item i {
+        font-size: 1.6rem;
+        margin-bottom: 6px;
+        color: var(--orange-primary);
+        background: var(--orange-soft);
+        padding: 12px;
+        border-radius: 50%;
+        transition: 0.2s;
+      }
+
+      .category-item:hover i {
+        background: var(--orange-primary);
+        color: white;
+      }
+
+      .category-item.active {
+        color: var(--orange-primary);
+        font-weight: 700;
+      }
+
+      /* Banner promosi oranye */
+      .promo-banner {
+        background: linear-gradient(145deg, #ffe5cc, #ffd4b3);
+        border-radius: 24px;
+        padding: 24px 32px;
+        margin: 24px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        color: var(--orange-dark);
+        box-shadow: var(--shadow);
+      }
+
+      .promo-text h2 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+
+      .promo-text p {
+        font-size: 1rem;
+        opacity: 0.9;
+      }
+
+      .promo-code {
+        background: white;
+        padding: 10px 24px;
+        border-radius: 40px;
+        font-weight: 700;
+        color: var(--orange-primary);
+        border: 2px dashed var(--orange-primary);
+      }
+
+      /* Kategori pakaian */
+      .section-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 32px 0 20px;
+      }
+
+      .section-title h3 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--orange-dark);
+      }
+
+      .section-title a {
+        color: var(--orange-primary);
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      /* Grid produk ala Tokopedia */
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 24px;
+      }
+
+      .product-card {
+        background: white;
+        border-radius: 20px;
+        padding: 16px;
+        transition: 0.25s;
+        border: 1px solid var(--border-light);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .product-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--orange-primary);
+        box-shadow: 0 12px 24px -8px rgba(230, 126, 34, 0.15);
+      }
+
+      /* GAMBAR ASLI DARI UNSPLASH - PAKAIAN TANPA WAJAH */
+      .product-image {
+        border-radius: 16px;
+        overflow: hidden;
+        aspect-ratio: 1/1;
+        margin-bottom: 16px;
+        background-color: var(--orange-pale);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+        display: block;
+      }
+
+      .product-card:hover .product-image img {
+        transform: scale(1.03);
+      }
+
+      .product-category {
+        font-size: 0.75rem;
+        color: var(--orange-primary);
+        background: var(--orange-soft);
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 40px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .product-name {
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: 6px;
+        color: var(--text-dark);
+      }
+
+      .product-price {
+        font-weight: 800;
+        font-size: 1.2rem;
+        color: var(--orange-dark);
+        margin-bottom: 6px;
+      }
+
+      .product-price span {
+        font-size: 0.85rem;
+        font-weight: 400;
+        color: var(--text-gray);
+        text-decoration: line-through;
+        margin-left: 8px;
+      }
+
+      .rating {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: #fbbf24;
+        font-size: 0.8rem;
+        margin-bottom: 12px;
+      }
+
+      .rating span {
+        color: var(--text-gray);
+        margin-left: 4px;
+      }
+
+      .btn-add {
+        background: var(--orange-soft);
+        border: none;
+        border-radius: 40px;
+        padding: 12px 0;
+        font-weight: 700;
+        color: var(--orange-primary);
+        cursor: pointer;
+        transition: 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 8px;
+        border: 1px solid transparent;
+      }
+
+      .btn-add:hover {
+        background: var(--orange-primary);
+        color: white;
+      }
+
+      /* Flash sale / khusus */
+      .flashsale {
+        background: white;
+        border-radius: 24px;
+        padding: 24px;
+        margin: 40px 0;
+        border: 2px solid var(--orange-light);
+      }
+
+      .flash-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+      }
+
+      .flash-header i {
+        font-size: 2rem;
+        color: var(--orange-primary);
+      }
+
+      .flash-timer {
+        background: var(--orange-primary);
+        color: white;
+        padding: 6px 18px;
+        border-radius: 40px;
+        font-weight: 700;
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+        .search-wrapper {
+          max-width: 400px;
+        }
+        .product-grid {
+          grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .search-wrapper {
+          max-width: 100%;
+          margin: 12px 0;
+        }
+        .user-actions {
+          justify-content: flex-end;
+        }
+        .logo-area {
+          justify-content: space-between;
+        }
+        .promo-banner {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+        .product-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .category-list {
+          gap: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 16px;
+        }
+        .logo-text {
+          font-size: 1.3rem;
+        }
+        .product-grid {
+          grid-template-columns: 1fr;
+        }
+        .search-box button span {
+          display: none;
+        }
+        .search-box button i {
+          margin: 0;
+        }
+        .search-box button {
+          padding: 12px 20px;
+        }
+        .category-item i {
+          font-size: 1.4rem;
+          padding: 10px;
+        }
+        .flash-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      /* footer */
+      footer {
+        background: white;
+        margin-top: 60px;
+        padding: 40px 0 20px;
+        border-top: 1px solid var(--border-light);
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-col h5 {
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--orange-dark);
+      }
+
+      .footer-col a {
+        display: block;
+        color: var(--text-gray);
+        margin-bottom: 10px;
+        text-decoration: none;
+        font-size: 0.95rem;
+      }
+
+      .copyright {
+        text-align: center;
+        color: var(--text-gray);
+        padding-top: 30px;
+        border-top: 1px solid var(--border-light);
+      }
+
+      /* keranjang floating */
+      .cart-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: var(--orange-primary);
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        box-shadow: 0 6px 20px rgba(230, 126, 34, 0.3);
+        cursor: pointer;
+        transition: 0.2s;
+        border: 4px solid white;
+      }
+
+      .cart-float:hover {
+        background: var(--orange-secondary);
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER ala Tokopedia oranye -->
+    <div class="top-header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo-area">
+            <div class="logo-icon">
+              <i class="fas fa-tshirt"></i>
+            </div>
+            <div class="logo-text">Orange<span>Style</span></div>
+          </div>
+
+          <!-- Search bar -->
+          <div class="search-wrapper">
+            <div class="search-box">
+              <input
+                type="text"
+                placeholder="Cari baju, celana, hoodie..."
+                id="searchInput"
+              />
+              <button type="submit">
+                <i class="fas fa-search"></i><span>Cari</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Ikon keranjang, wishlist, login -->
+          <div class="user-actions">
+            <div class="action-icon">
+              <i class="fas fa-shopping-cart"></i>
+              <span>Keranjang</span>
+            </div>
+            <div class="action-icon">
+              <i class="far fa-heart"></i>
+              <span>Favorit</span>
+            </div>
+            <div class="action-icon">
+              <i class="far fa-user-circle"></i>
+              <span>Masuk</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kategori navigasi -->
+    <div class="nav-categories">
+      <div class="container">
+        <div class="category-list">
+          <div class="category-item active">
+            <i class="fas fa-tshirt"></i>
+            <span>Semua</span>
+          </div>
+          <div class="category-item">
+            <i class="fas fa-hoodie"></i>
+            <span>Hoodie</span>
+          </div>
+          <div class="category-item">
+            <i class="fas fa-vest"></i>
+            <span>Kemeja</span>
+          </div>
+          <div class="category-item">
+            <i class="fas fa-umbrella-beach"></i>
+            <span>Santai</span>
+          </div>
+          <div class="category-item">
+            <i class="fas fa-shoe-prints"></i>
+            <span>Sepatu</span>
+          </div>
+          <div class="category-item">
+            <i class="fas fa-hat-cowboy"></i>
+            <span>Topi</span>
+          </div>
+          <div class="category-item">
+            <i class="fas fa-socks"></i>
+            <span>Aksesoris</span>
+          </div>
+          <div class="category-item">
+            <i class="fas fa-bag-shopping"></i>
+            <span>Tas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Banner promo oranye -->
+      <div class="promo-banner">
+        <div class="promo-text">
+          <h2>Sale! 30% + Gratis Ongkir</h2>
+          <p>Koleksi oranye hangat untuk gaya santaimu. Kode: ORANGE30</p>
+        </div>
+        <div class="promo-code"><i class="fas fa-tag"></i> ORANGE30</div>
+      </div>
+
+      <!-- Produk pilihan: GAMBAR ASLI PAKAIAN DARI UNSPLASH (tanpa wajah) -->
+      <div class="section-title">
+        <h3>Rekomendasi untukmu</h3>
+        <a href="#">Lihat semua <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <!-- GRID PRODUK dengan gambar Unsplash - semua foto pakaian, tanpa model wajah -->
+      <div class="product-grid" id="productGrid1">
+        <!-- Card 1 - Kemeja Flanel (gambar asli) -->
+        <!-- <div class="product-card">
+          <div class="product-image">
+            <img
+              src="https://images.unsplash.com/photo-1596755094514-f87e34085b38?w=400&h=400&fit=crop&auto=format&q=80"
+              alt="Kemeja flanel lengan panjang"
+              loading="lazy"
+            />
+          </div>
+          <span class="product-category">Kemeja Pria</span>
+          <div class="product-name">Flanel Kotak Orange</div>
+          <div class="product-price">Rp159.000 <span>Rp229.000</span></div>
+          <div class="rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i
+            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+            ><i class="fas fa-star-half-alt"></i>
+            <span>(4.6 · 127)</span>
+          </div>
+          <button class="btn-add">
+            <i class="fas fa-cart-plus"></i> Keranjang
+          </button>
+        </div> -->
+        <!-- Card 2 - Hoodie (gambar asli) -->
+        <div class="product-card">
+          <div class="product-image">
+            <img
+              src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=400&h=400&fit=crop&auto=format&q=80"
+              alt="Hoodie oversized orange"
+              loading="lazy"
+            />
+          </div>
+          <span class="product-category">Hoodie Unisex</span>
+          <div class="product-name">Oversize Hoodie Sunset</div>
+          <div class="product-price">Rp239.000</div>
+          <div class="rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i
+            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+            ><i class="fas fa-star"></i>
+            <span>(5.0 · 92)</span>
+          </div>
+          <button class="btn-add">
+            <i class="fas fa-cart-plus"></i> Keranjang
+          </button>
+        </div>
+        <!-- Card 3 - Celana Chino (gambar asli) -->
+        <div class="product-card">
+          <div class="product-image">
+            <img
+              src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=400&h=400&fit=crop&auto=format&q=80"
+              alt="Celana chino khaki"
+              loading="lazy"
+            />
+          </div>
+          <span class="product-category">Celana Chino</span>
+          <div class="product-name">Celana Chino Slim</div>
+          <div class="product-price">Rp189.000 <span>Rp270.000</span></div>
+          <div class="rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i
+            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+            ><i class="far fa-star"></i>
+            <span>(4.2 · 58)</span>
+          </div>
+          <button class="btn-add">
+            <i class="fas fa-cart-plus"></i> Keranjang
+          </button>
+        </div>
+        <!-- Card 4 - Jaket Denim (gambar asli) -->
+        <div class="product-card">
+          <div class="product-image">
+            <img
+              src="https://images.unsplash.com/photo-1544441892-794166f1e3be?w=400&h=400&fit=crop&auto=format&q=80"
+              alt="Jaket denim vintage"
+              loading="lazy"
+            />
+          </div>
+          <span class="product-category">Jaket Denim</span>
+          <div class="product-name">Jaket Denim Vintage</div>
+          <div class="product-price">Rp349.000</div>
+          <div class="rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i
+            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+            ><i class="fas fa-star-half-alt"></i>
+            <span>(4.8 · 71)</span>
+          </div>
+          <button class="btn-add">
+            <i class="fas fa-cart-plus"></i> Keranjang
+          </button>
+        </div>
+      </div>
+
+      <!-- Flash Sale dengan gambar asli -->
+      <div class="flashsale">
+        <div class="flash-header">
+          <i class="fas fa-bolt"></i>
+          <h3
+            style="
+              font-size: 1.8rem;
+              font-weight: 800;
+              color: var(--orange-dark);
+            "
+          >
+            Flash Sale
+          </h3>
+          <span class="flash-timer">Berakhir 05:12:33</span>
+        </div>
+        <!-- Grid produk flashsale -->
+        <div class="product-grid">
+          <!-- <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1534030506381-c1fae1e4bdbd?w=400&h=400&fit=crop&auto=format&q=80" alt="Topi trucker orange" loading="lazy">
+                    </div>
+                    <span class="product-category">Topi</span>
+                    <div class="product-name">Cap Trucker Oranye</div>
+                    <div class="product-price">Rp89.000 <span>Rp159.000</span></div>
+                    <button class="btn-add"><i class="fas fa-cart-plus"></i> Keranjang</button>
+                </div> -->
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?w=400&h=400&fit=crop&auto=format&q=80"
+                alt="Kaos kaki pattern"
+                loading="lazy"
+              />
+            </div>
+            <span class="product-category">Kaos Kaki</span>
+            <div class="product-name">Sox Pattern 3 pasang</div>
+            <div class="product-price">Rp59.000</div>
+            <button class="btn-add">
+              <i class="fas fa-cart-plus"></i> Keranjang
+            </button>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?w=400&h=400&fit=crop&auto=format&q=80"
+                alt="Sepatu sneakers canvas"
+                loading="lazy"
+              />
+            </div>
+            <span class="product-category">Sepatu</span>
+            <div class="product-name">Canvas Sneaker Army</div>
+            <div class="product-price">Rp199.000</div>
+            <button class="btn-add">
+              <i class="fas fa-cart-plus"></i> Keranjang
+            </button>
+          </div>
+          <!-- <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1597484662317-9bd7bdda2907?w=400&h=400&fit=crop&auto=format&q=80" alt="Tote bag kanvas" loading="lazy">
+                    </div>
+                    <span class="product-category">Tas</span>
+                    <div class="product-name">Tote Bag Kanvas</div>
+                    <div class="product-price">Rp119.000</div>
+                    <button class="btn-add"><i class="fas fa-cart-plus"></i> Keranjang</button>
+                </div> -->
+        </div>
+      </div>
+
+      <!-- Koleksi Pria dengan gambar asli -->
+      <div class="section-title">
+        <h3>Koleksi Pria</h3>
+        <a href="#">Lainnya</a>
+      </div>
+      <div class="product-grid">
+        <!-- <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&h=400&fit=crop&auto=format&q=80" alt="Kemeja flanel kotak" loading="lazy">
+                </div>
+                <span class="product-category">Kemeja Flanel</span>
+                <div class="product-name">Flanel Kotak-kotak</div>
+                <div class="product-price">Rp145.000</div>
+                <button class="btn-add"><i class="fas fa-cart-plus"></i> Keranjang</button>
+            </div> -->
+        <div class="product-card">
+          <div class="product-image">
+            <img
+              src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop&auto=format&q=80"
+              alt="Kaos polos putih"
+              loading="lazy"
+            />
+          </div>
+          <span class="product-category">Kaos Polos</span>
+          <div class="product-name">Kaos Combed 30s</div>
+          <div class="product-price">Rp69.000</div>
+          <button class="btn-add">
+            <i class="fas fa-cart-plus"></i> Keranjang
+          </button>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <img
+              src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=400&fit=crop&auto=format&q=80"
+              alt="Sweater rajut"
+              loading="lazy"
+            />
+          </div>
+          <span class="product-category">Sweater</span>
+          <div class="product-name">Sweater Rajut</div>
+          <div class="product-price">Rp199.000</div>
+          <button class="btn-add">
+            <i class="fas fa-cart-plus"></i> Keranjang
+          </button>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <img
+              src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400&h=400&fit=crop&auto=format&q=80"
+              alt="Celana pendek santai"
+              loading="lazy"
+            />
+          </div>
+          <span class="product-category">Santai</span>
+          <div class="product-name">Celana Pendek</div>
+          <div class="product-price">Rp109.000</div>
+          <button class="btn-add">
+            <i class="fas fa-cart-plus"></i> Keranjang
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h5>OrangeStyle</h5>
+            <a href="#">Tentang Kami</a>
+            <a href="#">Kebijakan</a>
+            <a href="#">Syarat & Ketentuan</a>
+            <a href="#">Karir</a>
+          </div>
+          <div class="footer-col">
+            <h5>Layanan</h5>
+            <a href="#">Pusat Bantuan</a>
+            <a href="#">Pengembalian</a>
+            <a href="#">Garansi Oranye</a>
+            <a href="#">Blog</a>
+          </div>
+          <div class="footer-col">
+            <h5>Kategori</h5>
+            <a href="#">Pria</a>
+            <a href="#">Wanita</a>
+            <a href="#">Anak</a>
+            <a href="#">Aksesoris</a>
+          </div>
+          <div class="footer-col">
+            <h5>Ikuti Kami</h5>
+            <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+            <a href="#"><i class="fab fa-tiktok"></i> TikTok</a>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>
+            © 2025 OrangeStyle — Belanja pakaian dengan gaya oranye. Semua
+            gambar produk dari Unsplash, tanpa wajah model.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Keranjang floating -->
+    <div class="cart-float">
+      <i class="fas fa-shopping-cart"></i>
+    </div>
+
+    <!-- JavaScript interaktif -->
+    <script>
+      (function () {
+        // Animasi / interaksi sederhana
+        const searchInput = document.getElementById("searchInput");
+        const searchBtn = document.querySelector(".search-box button");
+
+        // Fungsi pencarian simulasi
+        function performSearch() {
+          let query = searchInput.value.trim();
+          if (query) {
+            alert(
+              'Mencari produk: "' +
+                query +
+                '"\n(Fitur demo - dalam pengembangan)',
+            );
+          } else {
+            alert("Silakan masukkan nama pakaian");
+          }
+        }
+
+        if (searchBtn) {
+          searchBtn.addEventListener("click", performSearch);
+        }
+        if (searchInput) {
+          searchInput.addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+              performSearch();
+            }
+          });
+        }
+
+        // Klik kategori (simulasi)
+        const categories = document.querySelectorAll(".category-item");
+        categories.forEach((cat) => {
+          cat.addEventListener("click", function () {
+            categories.forEach((c) => c.classList.remove("active"));
+            this.classList.add("active");
+          });
+        });
+
+        // Tombol keranjang pada card
+        const addButtons = document.querySelectorAll(".btn-add");
+        addButtons.forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            const productName =
+              this.closest(".product-card")?.querySelector(".product-name")
+                ?.innerText || "Produk";
+            this.innerHTML = '<i class="fas fa-check"></i> Ditambahkan';
+            this.style.background = "#e67e22";
+            this.style.color = "white";
+            setTimeout(() => {
+              this.innerHTML = '<i class="fas fa-cart-plus"></i> Keranjang';
+              this.style.background = "var(--orange-soft)";
+              this.style.color = "var(--orange-primary)";
+            }, 1500);
+          });
+        });
+
+        // Floating cart click
+        const cartFloat = document.querySelector(".cart-float");
+        if (cartFloat) {
+          cartFloat.addEventListener("click", function () {
+            alert(
+              "Keranjang belanja (demo) — kamu menambahkan beberapa item oranye.",
+            );
+          });
+        }
+
+        console.log(
+          "OrangeStyle — Tokopedia pakaian tema oranye, gambar asli Unsplash tanpa wajah.",
+        );
+      })();
+    </script>
+  </body>
+</html>

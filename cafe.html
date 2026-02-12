@@ -1,0 +1,1074 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"
+    />
+    <title>Rustik & Co. | Modern Natural Cafe</title>
+    <!-- Font Awesome 6 (Free) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <!-- Google Fonts: Natural & Elegant -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ---------- ROOT VARIABLES (Natural Palette) ---------- */
+      :root {
+        --cream: #faf7f2;
+        --sage: #9caf88;
+        --deep-sage: #5e6b4c;
+        --espresso: #914b05;
+        --latte: #ecb874;
+        --sand: #d4c9bc;
+        --moss: #6a7a4d;
+        --white: #ffffff;
+        --warm-gray: #8a817c;
+        --shadow-sm:
+          0 8px 20px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+        --shadow-md: 0 16px 32px -8px rgba(0, 0, 0, 0.06);
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--cream);
+        color: var(--espresso);
+        line-height: 1.6;
+        scroll-behavior: smooth;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      .logo,
+      .nav-links a,
+      .menu-item h3 {
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* ---------- REUSABLE ---------- */
+      .container {
+        width: 90%;
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+
+      section {
+        padding: 5rem 0;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: var(--deep-sage);
+        position: relative;
+      }
+
+      .section-sub {
+        font-size: 1.05rem;
+        color: var(--warm-gray);
+        margin-bottom: 3rem;
+        font-weight: 300;
+        max-width: 600px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.85rem 2.2rem;
+        border-radius: 50px;
+        font-weight: 500;
+        transition: var(--transition);
+        border: 1px solid transparent;
+        font-size: 0.95rem;
+        letter-spacing: 0.3px;
+      }
+
+      .btn-primary {
+        background-color: var(--deep-sage);
+        color: white;
+        box-shadow: 0 4px 12px rgba(94, 107, 76, 0.2);
+      }
+
+      .btn-primary:hover {
+        background-color: #4e5a3e;
+        transform: translateY(-3px);
+        box-shadow: 0 12px 20px rgba(94, 107, 76, 0.25);
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 1.5px solid var(--deep-sage);
+        color: var(--deep-sage);
+      }
+
+      .btn-outline:hover {
+        background: var(--deep-sage);
+        color: white;
+        transform: translateY(-3px);
+      }
+
+      /* ---------- HEADER / NAV (Natural, transparan) ---------- */
+      header {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+        background-color: rgba(250, 247, 242, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+        border-bottom: 1px solid rgba(158, 142, 125, 0.1);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 0;
+      }
+
+      .logo {
+        font-size: 1.9rem;
+        font-weight: 700;
+        color: var(--deep-sage);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo i {
+        font-size: 2rem;
+        color: var(--sage);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.8rem;
+        list-style: none;
+        font-weight: 500;
+        font-size: 1rem;
+      }
+
+      .nav-links a {
+        position: relative;
+        color: var(--espresso);
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -6px;
+        left: 0;
+        background-color: var(--sage);
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .hamburger {
+        display: none;
+        font-size: 1.8rem;
+        color: var(--deep-sage);
+        cursor: pointer;
+      }
+
+      /* ---------- HERO (Natural light & organic) ---------- */
+      .hero {
+        padding: 2rem 0 4rem 0;
+        background: linear-gradient(145deg, #f5f0ea 0%, #fcf9f5 100%);
+        overflow: hidden;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .hero-content h1 {
+        font-size: 3.5rem;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        color: #2f2a24;
+        font-weight: 700;
+      }
+
+      .hero-content .accent {
+        color: var(--deep-sage);
+        font-style: italic;
+        border-bottom: 4px solid var(--sage);
+        display: inline-block;
+        padding-bottom: 2px;
+      }
+
+      .hero-text {
+        font-size: 1.2rem;
+        color: #4f4a45;
+        margin-bottom: 2.5rem;
+        font-weight: 300;
+        max-width: 90%;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1.2rem;
+      }
+
+      .hero-image {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        height: 450px;
+        background: url("https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
+          center/cover no-repeat;
+      }
+
+      .hero-image::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          145deg,
+          rgba(94, 107, 76, 0.1) 0%,
+          rgba(58, 50, 42, 0.1) 100%
+        );
+      }
+
+      /* ---------- ATMOSPHERE SECTION (natural, earthy) ---------- */
+      .atmosphere {
+        background-color: white;
+      }
+
+      .atmo-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 3.5rem;
+        align-items: center;
+      }
+
+      .atmo-text p {
+        margin-bottom: 1.5rem;
+        color: #4f4b47;
+        font-size: 1.1rem;
+        font-weight: 300;
+      }
+
+      .atmo-stats {
+        display: flex;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .stat-item {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .stat-number {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--deep-sage);
+        font-family: "Playfair Display", serif;
+        line-height: 1;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #7a726a;
+      }
+
+      .atmo-image {
+        height: 380px;
+        border-radius: 24px;
+        background: url("https://images.pexels.com/photos/2290753/pexels-photo-2290753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
+          center/cover no-repeat;
+        box-shadow: var(--shadow-sm);
+      }
+
+      /* ---------- MENU PREVIEW (modern cards) ---------- */
+      .menu {
+        background-color: #f9f6f1;
+      }
+
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 2rem;
+        margin-top: 1rem;
+      }
+
+      .menu-card {
+        background: white;
+        border-radius: 28px;
+        padding: 2rem 1.5rem;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+      }
+
+      .menu-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--latte);
+      }
+
+      .menu-icon {
+        font-size: 2.6rem;
+        color: var(--sage);
+        margin-bottom: 1.2rem;
+      }
+
+      .menu-card h3 {
+        font-size: 1.6rem;
+        font-weight: 600;
+        margin-bottom: 0.7rem;
+        color: #3e3a35;
+      }
+
+      .menu-desc {
+        color: #6a625a;
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .menu-price {
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: var(--deep-sage);
+        font-family: "Inter", sans-serif;
+      }
+
+      .menu-tag {
+        background: #efebe7;
+        border-radius: 100px;
+        padding: 0.3rem 1rem;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        color: #5a534b;
+        display: inline-block;
+        margin-top: 0.8rem;
+      }
+
+      /* ---------- TESTIMONIALS (organic, soft) ---------- */
+      .testimonials {
+        background: white;
+      }
+
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .testimonial-card {
+        background: #fcfaf7;
+        padding: 2rem 1.8rem;
+        border-radius: 24px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
+        border: 1px solid #ede6dd;
+        transition: var(--transition);
+      }
+
+      .testimonial-card:hover {
+        background: white;
+        border-color: var(--sand);
+      }
+
+      .testimonial-card i {
+        color: var(--sage);
+        font-size: 2rem;
+        opacity: 0.5;
+        margin-bottom: 0.8rem;
+      }
+
+      .testimonial-text {
+        font-size: 1rem;
+        font-style: italic;
+        color: #3e3a35;
+        margin-bottom: 1.5rem;
+      }
+
+      .customer {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+      }
+
+      .customer-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: #c0b7ae;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .customer-info h4 {
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .customer-info p {
+        font-size: 0.8rem;
+        color: var(--warm-gray);
+      }
+
+      /* ---------- GALLERY (instagram style, natural) ---------- */
+      .gallery {
+        background: #f3efe9;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+      }
+
+      .gallery-item {
+        aspect-ratio: 1 / 1;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+        background-size: cover;
+        background-position: center;
+      }
+
+      .gallery-item:hover {
+        transform: scale(1.02);
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      /* ---------- RESERVATION (modern, sleek) ---------- */
+      .reservation {
+        background: white;
+      }
+
+      .reservation-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        background: var(--cream);
+        border-radius: 32px;
+        padding: 3rem;
+        align-items: center;
+      }
+
+      .reservation h2 {
+        color: var(--deep-sage);
+      }
+
+      .form-group {
+        margin-bottom: 1.2rem;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 1rem 1.2rem;
+        border: 1px solid #dad3cc;
+        border-radius: 50px;
+        font-family: "Inter", sans-serif;
+        background: white;
+        transition: var(--transition);
+        outline: none;
+        font-size: 0.95rem;
+      }
+
+      input:focus,
+      select:focus {
+        border-color: var(--sage);
+        box-shadow: 0 0 0 3px rgba(156, 175, 136, 0.2);
+      }
+
+      .reservation-image {
+        background: url("https://images.pexels.com/photos/1695052/pexels-photo-1695052.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
+          center/cover no-repeat;
+        height: 300px;
+        border-radius: 24px;
+        box-shadow: var(--shadow-md);
+      }
+
+      /* ---------- FOOTER ---------- */
+      footer {
+        background: #2e2b27;
+        color: #dbd5cd;
+        padding: 4rem 0 2rem;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1.5fr;
+        gap: 2.5rem;
+      }
+
+      .footer-logo {
+        font-size: 2rem;
+        font-family: "Playfair Display", serif;
+        color: #e2dbd1;
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-logo i {
+        color: var(--sage);
+      }
+
+      .footer-about p {
+        color: #b3aaa0;
+        font-weight: 300;
+      }
+
+      .footer-links h4,
+      .footer-contact h4 {
+        color: #f0e7dd;
+        margin-bottom: 1.2rem;
+        font-size: 1.1rem;
+      }
+
+      .footer-links ul {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.6rem;
+      }
+
+      .footer-links a {
+        color: #bcb2a7;
+        transition: var(--transition);
+      }
+
+      .footer-links a:hover {
+        color: var(--sage);
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 1.2rem;
+        margin-top: 1.5rem;
+      }
+
+      .social-icons a {
+        color: #d6ccc2;
+        font-size: 1.4rem;
+        transition: var(--transition);
+      }
+
+      .social-icons a:hover {
+        color: var(--sage);
+        transform: translateY(-3px);
+      }
+
+      .copyright {
+        text-align: center;
+        margin-top: 3.5rem;
+        padding-top: 2rem;
+        border-top: 1px solid #49433c;
+        color: #9e948b;
+        font-size: 0.9rem;
+      }
+
+      /* ---------- RESPONSIVE ---------- */
+      @media (max-width: 1000px) {
+        .hero-grid,
+        .atmo-grid,
+        .reservation-wrapper,
+        .footer-grid,
+        .testimonial-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-image {
+          height: 380px;
+          order: -1;
+        }
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .nav-links {
+          display: none;
+        }
+        .hamburger {
+          display: block;
+        }
+        .nav-links.active {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 80px;
+          left: 0;
+          width: 100%;
+          background: rgba(250, 247, 242, 0.98);
+          backdrop-filter: blur(12px);
+          padding: 2rem;
+          gap: 1.5rem;
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.05);
+          border-bottom: 1px solid #ddd;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .section-title {
+          font-size: 2rem;
+        }
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+        .hero-buttons {
+          flex-direction: column;
+        }
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- MODERN NATURAL CAFE HEADER -->
+    <header>
+      <nav class="container">
+        <div class="logo"><i class="fas fa-leaf"></i> Rustik & Co.</div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#atmosphere">Atmosphere</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#testimonials">Stories</a></li>
+          <li><a href="#reservation">Reserve</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO SECTION – Modern & natural vibe -->
+      <section class="hero" id="home">
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <h1>
+              Where <span class="accent">nature</span><br />meets espresso.
+            </h1>
+            <p class="hero-text">
+              Organic beans, house-baked pastries, and a sun-drenched space
+              designed for slow mornings and good conversations.
+            </p>
+            <div class="hero-buttons">
+              <a href="#menu" class="btn btn-primary">Explore menu</a>
+              <a href="#reservation" class="btn btn-outline">Find a table</a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <!-- background image via css -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ATMOSPHERE / STORY (earthy, profesional) -->
+      <section class="atmosphere" id="atmosphere">
+        <div class="container atmo-grid">
+          <div class="atmo-text">
+            <h2 class="section-title">Crafted for calm.</h2>
+            <div class="section-sub">A sanctuary in the city</div>
+            <p>
+              We believe coffee should be experienced, not just consumed. Our
+              space blends raw timber, warm lighting, and the gentle aroma of
+              roasted single-origin beans. Every corner is an invitation to
+              pause.
+            </p>
+            <p>
+              Founded in 2014, Rustik & Co. has become a haven for remote
+              workers, artists, and coffee lovers who refuse to compromise on
+              quality or ambiance.
+            </p>
+            <div class="atmo-stats">
+              <div class="stat-item">
+                <span class="stat-number">5k+</span>
+                <span class="stat-label">Coffee lovers</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">20+</span>
+                <span class="stat-label">Origins</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">4.9</span>
+                <span class="stat-label">Google rating</span>
+              </div>
+            </div>
+          </div>
+          <div class="atmo-image"></div>
+        </div>
+      </section>
+
+      <!-- MENU PREVIEW – Signature items modern card -->
+      <section class="menu" id="menu">
+        <div class="container">
+          <h2 class="section-title">Signature selection</h2>
+          <div class="section-sub">
+            Crafted by our roasters, inspired by the seasons.
+          </div>
+          <div class="menu-grid">
+            <div class="menu-card">
+              <div class="menu-icon"><i class="fas fa-mug-hot"></i></div>
+              <h3>Honeycomb Latte</h3>
+              <p class="menu-desc">
+                Espresso, raw honey, oat milk & a touch of vanilla. Topped with
+                honeycomb crumble.
+              </p>
+              <span class="menu-price">$6.2</span>
+              <span class="menu-tag">Best seller</span>
+            </div>
+            <div class="menu-card">
+              <div class="menu-icon"><i class="fas fa-seedling"></i></div>
+              <h3>Sourdough Avocado</h3>
+              <p class="menu-desc">
+                House-fermented sourdough, whipped avocado, chili flakes, lemon
+                zest.
+              </p>
+              <span class="menu-price">$9.8</span>
+              <span class="menu-tag">Vegan</span>
+            </div>
+            <div class="menu-card">
+              <div class="menu-icon"><i class="fas fa-cookie-bite"></i></div>
+              <h3>Pistachio Croissant</h3>
+              <p class="menu-desc">
+                Buttery, flaky layers with organic pistachio cream and powdered
+                sugar.
+              </p>
+              <span class="menu-price">$5.5</span>
+              <span class="menu-tag">Limited</span>
+            </div>
+            <div class="menu-card">
+              <div class="menu-icon"><i class="fas fa-wine-glass-alt"></i></div>
+              <h3>Cold Brew Tonic</h3>
+              <p class="menu-desc">
+                Nitro cold brew, mediterranean tonic, orange peel, rosemary
+                sprig.
+              </p>
+              <span class="menu-price">$7.0</span>
+              <span class="menu-tag">Refreshing</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS – social proof natural modern -->
+      <section class="testimonials" id="testimonials">
+        <div class="container">
+          <h2 class="section-title">The coffee chronicles</h2>
+          <div class="section-sub">
+            What our regulars say about the experience.
+          </div>
+          <div class="testimonial-grid">
+            <div class="testimonial-card">
+              <i class="fas fa-quote-right"></i>
+              <p class="testimonial-text">
+                “Finally a place that gets the lighting right. I've written half
+                my novel here. The pistachio croissant is my writing fuel.”
+              </p>
+              <div class="customer">
+                <div class="customer-avatar" style="background: #7c6a5a">
+                  JD
+                </div>
+                <div class="customer-info">
+                  <h4>Jessica D.</h4>
+                  <p>Freelance writer · 3 yrs visiting</p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <i class="fas fa-quote-right"></i>
+              <p class="testimonial-text">
+                “As a coffee roaster myself, I’m picky. Their Ethiopian
+                single-origin is flawless — fruity, clean, and perfectly
+                extracted.”
+              </p>
+              <div class="customer">
+                <div class="customer-avatar" style="background: #5e6b4c">
+                  MK
+                </div>
+                <div class="customer-info">
+                  <h4>Marcus K.</h4>
+                  <p>Roastery owner</p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <i class="fas fa-quote-right"></i>
+              <p class="testimonial-text">
+                “My toddler and I have our weekly mommy-daughter date here.
+                Staff is so welcoming and the banana bread is top tier.”
+              </p>
+              <div class="customer">
+                <div class="customer-avatar" style="background: #b28b6f">
+                  LN
+                </div>
+                <div class="customer-info">
+                  <h4>Lauren N.</h4>
+                  <p>Regular since 2019</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INSTAGRAM WORTHY GALLERY (natural aesthetic) -->
+      <section class="gallery">
+        <div class="container">
+          <h2 class="section-title">#RustikMoments</h2>
+          <div class="section-sub">
+            The natural beauty of our cafe, through your lens.
+          </div>
+          <div class="gallery-grid">
+            <div
+              class="gallery-item"
+              style="
+                background-image: url(&quot;https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2&quot;);
+              "
+            ></div>
+            <div
+              class="gallery-item"
+              style="
+                background-image: url(&quot;https://images.pexels.com/photos/683039/pexels-photo-683039.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2&quot;);
+              "
+            ></div>
+            <div
+              class="gallery-item"
+              style="
+                background-image: url(&quot;https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2&quot;);
+              "
+            ></div>
+            <div
+              class="gallery-item"
+              style="
+                background-image: url(&quot;https://images.pexels.com/photos/1194683/pexels-photo-1194683.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2&quot;);
+              "
+            ></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESERVATION / CONTACT (subtle interactive) -->
+      <section class="reservation" id="reservation">
+        <div class="container reservation-wrapper">
+          <div>
+            <h2 class="section-title" style="margin-bottom: 0.5rem">
+              Reserve your spot.
+            </h2>
+            <p style="color: #5b554f; margin-bottom: 2rem; font-weight: 300">
+              We keep a few tables for walk-ins, but booking is recommended for
+              weekends.
+            </p>
+            <form id="reserveForm">
+              <div class="form-group">
+                <input type="text" placeholder="Full name" required id="name" />
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  placeholder="Email address"
+                  required
+                  id="email"
+                />
+              </div>
+              <div
+                class="form-group"
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem"
+              >
+                <input type="date" id="date" />
+                <select id="time">
+                  <option>10:30 AM</option>
+                  <option>11:00 AM</option>
+                  <option>12:30 PM</option>
+                  <option>2:00 PM</option>
+                  <option>3:30 PM</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  style="
+                    width: 100%;
+                    border-radius: 50px;
+                    border: none;
+                    cursor: pointer;
+                  "
+                >
+                  Request reservation
+                </button>
+              </div>
+              <p
+                id="formFeedback"
+                style="
+                  font-size: 0.9rem;
+                  margin-top: 1rem;
+                  color: var(--deep-sage);
+                "
+              ></p>
+            </form>
+          </div>
+          <div class="reservation-image"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER – Natural, earthy palette, clean typography -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-about">
+            <div class="footer-logo">
+              <i class="fas fa-leaf"></i> Rustik & Co.
+            </div>
+            <p>
+              Where nature meets espresso. Specialty coffee, wholesome pastries,
+              and a space that feels like a breath of fresh air.
+            </p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-pinterest"></i></a>
+              <a href="#"><i class="fab fa-spotify"></i></a>
+            </div>
+          </div>
+          <div class="footer-links">
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#atmosphere">Our story</a></li>
+              <li><a href="#menu">Menu</a></li>
+              <li><a href="#">Gift cards</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Legals</h4>
+            <ul>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Visit</h4>
+            <p>18 Granger Ave, <br />Portland, ME 04102</p>
+            <p style="margin-top: 1rem">☕ Open daily 7am–7pm</p>
+            <p>+1 (207) 555-0934</p>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>
+            © 2025 Rustik & Co. — Designed with natural intuition. All imagery
+            illustrative.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- SIMPLE JS: Mobile toggle + Form feedback -->
+    <script>
+      (function () {
+        "use strict";
+
+        // Mobile navigation toggle
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("navLinks");
+
+        if (hamburger) {
+          hamburger.addEventListener("click", function (e) {
+            e.stopPropagation();
+            navLinks.classList.toggle("active");
+          });
+        }
+
+        // Close mobile menu when a nav link is clicked (optional)
+        const links = document.querySelectorAll(".nav-links a");
+        links.forEach((link) => {
+          link.addEventListener("click", function () {
+            if (window.innerWidth <= 1000) {
+              navLinks.classList.remove("active");
+            }
+          });
+        });
+
+        // Reservation form - simple feedback (no page reload)
+        const form = document.getElementById("reserveForm");
+        const feedback = document.getElementById("formFeedback");
+
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const date = document.getElementById("date").value;
+
+            if (name === "" || email === "" || date === "") {
+              feedback.textContent = "Please fill in all required fields.";
+              feedback.style.color = "#b34a3c";
+            } else {
+              feedback.textContent = `✨ Thanks ${name}! We’ll confirm your table shortly.`;
+              feedback.style.color = "var(--deep-sage)";
+              form.reset(); // optional reset
+            }
+          });
+        }
+
+        // Smooth scroll for internal links (native)
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            const href = this.getAttribute("href");
+            if (href === "#" || href === "") return;
+            const target = document.querySelector(href);
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

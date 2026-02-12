@@ -1,0 +1,1013 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.5"
+    />
+    <title>GreenStyle - Tokopedia Pakaian Hijau</title>
+    <!-- Font & Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f5faf5;
+        color: #1e3a2e;
+        line-height: 1.5;
+      }
+
+      :root {
+        --green-primary: #0e6b4e;
+        --green-secondary: #1e8a5e;
+        --green-soft: #e8f3e8;
+        --green-light: #d4ecd6;
+        --green-pale: #f0f7f0;
+        --green-dark: #0a4638;
+        --gray-soft: #f9fbf9;
+        --text-dark: #1e3a2e;
+        --text-gray: #5a6d5a;
+        --border-light: #d0e0d0;
+        --shadow: 0 2px 8px rgba(0, 40, 20, 0.04);
+      }
+
+      /* Layout utama seperti Tokopedia */
+      .container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header ala Tokopedia hijau */
+      .top-header {
+        background-color: white;
+        border-bottom: 1px solid var(--border-light);
+        padding: 8px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: var(--shadow);
+      }
+
+      .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .logo-area {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .logo-icon {
+        background: var(--green-primary);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        font-weight: 700;
+      }
+
+      .logo-text {
+        font-weight: 800;
+        font-size: 1.6rem;
+        color: var(--green-dark);
+        letter-spacing: -0.5px;
+      }
+
+      .logo-text span {
+        color: var(--green-secondary);
+        font-weight: 400;
+      }
+
+      /* Search bar ala marketplace */
+      .search-wrapper {
+        flex: 1;
+        max-width: 600px;
+        margin: 0 20px;
+      }
+
+      .search-box {
+        display: flex;
+        align-items: center;
+        background: white;
+        border: 2px solid var(--green-light);
+        border-radius: 60px;
+        padding: 4px 4px 4px 20px;
+        transition: 0.2s;
+        box-shadow: 0 2px 6px rgba(14, 107, 78, 0.04);
+      }
+
+      .search-box:focus-within {
+        border-color: var(--green-primary);
+        box-shadow: 0 0 0 3px rgba(14, 107, 78, 0.1);
+      }
+
+      .search-box input {
+        width: 100%;
+        border: none;
+        padding: 14px 0;
+        font-size: 1rem;
+        background: transparent;
+        outline: none;
+      }
+
+      .search-box button {
+        background: var(--green-primary);
+        border: none;
+        border-radius: 50px;
+        padding: 12px 28px;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+      }
+
+      .search-box button:hover {
+        background: var(--green-secondary);
+      }
+
+      /* Ikon user/keranjang */
+      .user-actions {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .action-icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--text-gray);
+        font-size: 0.8rem;
+        transition: 0.2s;
+        cursor: pointer;
+      }
+
+      .action-icon i {
+        font-size: 1.4rem;
+        margin-bottom: 4px;
+        color: var(--green-dark);
+      }
+
+      .action-icon:hover {
+        color: var(--green-primary);
+      }
+
+      /* Kategori navigasi */
+      .nav-categories {
+        background: white;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--border-light);
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: thin;
+      }
+
+      .category-list {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+      }
+
+      .category-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--text-gray);
+        font-weight: 600;
+        font-size: 0.85rem;
+        transition: 0.2s;
+        cursor: pointer;
+        min-width: 60px;
+      }
+
+      .category-item i {
+        font-size: 1.6rem;
+        margin-bottom: 6px;
+        color: var(--green-primary);
+        background: var(--green-soft);
+        padding: 12px;
+        border-radius: 50%;
+        transition: 0.2s;
+      }
+
+      .category-item:hover i {
+        background: var(--green-primary);
+        color: white;
+      }
+
+      .category-item.active {
+        color: var(--green-primary);
+        font-weight: 700;
+      }
+
+      /* Banner promosi hijau */
+      .promo-banner {
+        background: linear-gradient(145deg, #c8e6c9, #a5d6a7);
+        border-radius: 24px;
+        padding: 24px 32px;
+        margin: 24px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        color: var(--green-dark);
+        box-shadow: var(--shadow);
+      }
+
+      .promo-text h2 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+
+      .promo-text p {
+        font-size: 1rem;
+        opacity: 0.9;
+      }
+
+      .promo-code {
+        background: white;
+        padding: 10px 24px;
+        border-radius: 40px;
+        font-weight: 700;
+        color: var(--green-primary);
+        border: 2px dashed var(--green-primary);
+      }
+
+      /* Kategori pakaian (ilustrasi tanpa wajah) */
+      .section-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 32px 0 20px;
+      }
+
+      .section-title h3 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--green-dark);
+      }
+
+      .section-title a {
+        color: var(--green-primary);
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      /* Grid produk ala Tokopedia */
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 24px;
+      }
+
+      .product-card {
+        background: white;
+        border-radius: 20px;
+        padding: 16px;
+        transition: 0.25s;
+        border: 1px solid var(--border-light);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .product-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--green-primary);
+        box-shadow: 0 12px 24px -8px rgba(14, 107, 78, 0.12);
+      }
+
+      /* ILUSTRASI PAKAIAN TANPA W AjAH */
+      .product-illustration {
+        background: var(--green-pale);
+        border-radius: 16px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 1/1;
+        margin-bottom: 16px;
+        position: relative;
+        color: var(--green-primary);
+      }
+
+      .product-illustration i {
+        font-size: 5rem;
+        filter: drop-shadow(2px 8px 12px rgba(0, 0, 0, 0.04));
+      }
+
+      /* variasi ikon pakaian */
+      .product-info {
+        flex: 1;
+      }
+
+      .product-category {
+        font-size: 0.75rem;
+        color: var(--green-primary);
+        background: var(--green-soft);
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 40px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .product-name {
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: 6px;
+        color: var(--text-dark);
+      }
+
+      .product-price {
+        font-weight: 800;
+        font-size: 1.2rem;
+        color: var(--green-dark);
+        margin-bottom: 6px;
+      }
+
+      .product-price span {
+        font-size: 0.85rem;
+        font-weight: 400;
+        color: var(--text-gray);
+        text-decoration: line-through;
+        margin-left: 8px;
+      }
+
+      .rating {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: #fbbf24;
+        font-size: 0.8rem;
+        margin-bottom: 12px;
+      }
+
+      .rating span {
+        color: var(--text-gray);
+        margin-left: 4px;
+      }
+
+      .btn-add {
+        background: var(--green-soft);
+        border: none;
+        border-radius: 40px;
+        padding: 12px 0;
+        font-weight: 700;
+        color: var(--green-primary);
+        cursor: pointer;
+        transition: 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 8px;
+        border: 1px solid transparent;
+      }
+
+      .btn-add:hover {
+        background: var(--green-primary);
+        color: white;
+      }
+
+      /* Flash sale / khusus */
+      .flashsale {
+        background: white;
+        border-radius: 24px;
+        padding: 24px;
+        margin: 40px 0;
+        border: 2px solid var(--green-light);
+      }
+
+      .flash-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+
+      .flash-header i {
+        font-size: 2rem;
+        color: var(--green-primary);
+      }
+
+      /* Responsive tablet & hp */
+      @media (max-width: 1024px) {
+        .search-wrapper {
+          max-width: 400px;
+        }
+        .product-grid {
+          grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .search-wrapper {
+          max-width: 100%;
+          margin: 12px 0;
+        }
+        .user-actions {
+          justify-content: flex-end;
+        }
+        .logo-area {
+          justify-content: space-between;
+        }
+        .promo-banner {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+        .product-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .category-list {
+          gap: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 16px;
+        }
+        .logo-text {
+          font-size: 1.3rem;
+        }
+        .product-grid {
+          grid-template-columns: 1fr;
+        }
+        .search-box button span {
+          display: none;
+        }
+        .search-box button i {
+          margin: 0;
+        }
+        .search-box button {
+          padding: 12px 20px;
+        }
+        .category-item i {
+          font-size: 1.4rem;
+          padding: 10px;
+        }
+      }
+
+      /* footer */
+      footer {
+        background: white;
+        margin-top: 60px;
+        padding: 40px 0 20px;
+        border-top: 1px solid var(--border-light);
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-col h5 {
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--green-dark);
+      }
+
+      .footer-col a {
+        display: block;
+        color: var(--text-gray);
+        margin-bottom: 10px;
+        text-decoration: none;
+        font-size: 0.95rem;
+      }
+
+      .copyright {
+        text-align: center;
+        color: var(--text-gray);
+        padding-top: 30px;
+        border-top: 1px solid var(--border-light);
+      }
+
+      /* keranjang floating (simbolis) */
+      .cart-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: var(--green-primary);
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        box-shadow: 0 6px 20px rgba(14, 107, 78, 0.3);
+        cursor: pointer;
+        transition: 0.2s;
+        border: 4px solid white;
+      }
+
+      .cart-float:hover {
+        background: var(--green-secondary);
+        transform: scale(1.05);
+      }
+
+      /* ilustrasi tanpa wajah -> semua ikon pakaian/aksesoris */
+      .empty-illustration {
+        text-align: center;
+        padding: 40px;
+        background: var(--green-pale);
+        border-radius: 40px;
+        color: var(--green-primary);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER ala Tokopedia hijau -->
+    <div class="top-header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo-area">
+            <div class="logo-icon">
+              <i class="fas fa-tshirt"></i>
+            </div>
+            <div class="logo-text">Green<span>Style</span></div>
+          </div>
+
+          <!-- Search bar -->
+          <div class="search-wrapper">
+            <div class="search-box">
+              <input
+                type="text"
+                placeholder="Cari baju, celana, hoodie..."
+                id="searchInput"
+              />
+              <button type="submit">
+                <i class="fas fa-search"></i><span>Cari</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Ikon keranjang, wishlist, login (tanpa wajah) -->
+          <div class="user-actions">
+            <div class="action-icon">
+              <i class="fas fa-shopping-cart"></i>
+              <span>Keranjang</span>
+            </div>
+            <div class="action-icon">
+              <i class="far fa-heart"></i>
+              <span>Favorit</span>
+            </div>
+            <div class="action-icon">
+              <i class="far fa-user-circle"></i>
+              <span>Masuk</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kategori navigasi (ikon pakaian) -->
+    <div class="nav-categories">
+      <div class="container">
+        <div class="category-list">
+          <div class="category-item active">
+            <i class="fas fa-tshirt"></i>
+            <span>Semua</span>
+          </div>
+          <div class="category-item">
+            <i class="fas fa-hoodie"></i>
+            <span>Hoodie</span>
+          </div>
+          <div class="category-item">
+            <i class="fas fa-vest"></i>
+            <span>Kemeja</span>
+          </div>
+          <div class="category-item">
+            <i class="fas fa-umbrella-beach"></i>
+            <span>Santai</span>
+          </div>
+          <div class="category-item">
+            <i class="fas fa-shoe-prints"></i>
+            <span>Sepatu</span>
+          </div>
+          <div class="category-item">
+            <i class="fas fa-hat-cowboy"></i>
+            <span>Topi</span>
+          </div>
+          <div class="category-item">
+            <i class="fas fa-socks"></i>
+            <span>Aksesoris</span>
+          </div>
+          <div class="category-item">
+            <i class="fas fa-bag-shopping"></i>
+            <span>Tas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Banner promo hijau -->
+      <div class="promo-banner">
+        <div class="promo-text">
+          <h2>Sale! 20% + Gratis Ongkir</h2>
+          <p>Koleksi hijau ramah lingkungan. Kode: HIJAU20</p>
+        </div>
+        <div class="promo-code"><i class="fas fa-tag"></i> HIJAU20</div>
+      </div>
+
+      <!-- Produk pilihan: ilustrasi pakaian tanpa wajah -->
+      <div class="section-title">
+        <h3>Rekomendasi untukmu</h3>
+        <a href="#">Lihat semua <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <!-- GRID PRODUK 1 (ilustrasi semua pakaian tanpa foto manusia) -->
+      <div class="product-grid" id="productGrid1">
+        <!-- Card 1 - Kemeja -->
+        <div class="product-card">
+          <div class="product-illustration">
+            <i class="fas fa-shirt" style="font-size: 5rem; color: #0e6b4e"></i>
+          </div>
+          <span class="product-category">Kemeja Pria</span>
+          <div class="product-name">Kemeja Lengan Panjang Green</div>
+          <div class="product-price">Rp149.000 <span>Rp210.000</span></div>
+          <div class="rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i
+            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+            ><i class="fas fa-star-half-alt"></i>
+            <span>(4.5 · 103)</span>
+          </div>
+          <button class="btn-add">
+            <i class="fas fa-cart-plus"></i> Keranjang
+          </button>
+        </div>
+        <!-- Card 2 - Hoodie ilustrasi -->
+        <div class="product-card">
+          <div class="product-illustration">
+            <i
+              class="fas fa-hoodie"
+              style="font-size: 5rem; color: #1e8a5e"
+            ></i>
+          </div>
+          <span class="product-category">Hoodie Unisex</span>
+          <div class="product-name">Oversize Hoodie Sage</div>
+          <div class="product-price">Rp219.000</div>
+          <div class="rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i
+            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+            ><i class="fas fa-star"></i>
+            <span>(5.0 · 78)</span>
+          </div>
+          <button class="btn-add">
+            <i class="fas fa-cart-plus"></i> Keranjang
+          </button>
+        </div>
+        <!-- Card 3 - Celana ilustrasi -->
+        <div class="product-card">
+          <div class="product-illustration">
+            <i class="fas fa-vest" style="font-size: 5rem; color: #0a4638"></i>
+          </div>
+          <span class="product-category">Celana Chino</span>
+          <div class="product-name">Celana Chino Slim Fit</div>
+          <div class="product-price">Rp179.000 <span>Rp250.000</span></div>
+          <div class="rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i
+            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+            ><i class="far fa-star"></i>
+            <span>(4.0 · 42)</span>
+          </div>
+          <button class="btn-add">
+            <i class="fas fa-cart-plus"></i> Keranjang
+          </button>
+        </div>
+        <!-- Card 4 - Jaket ilustrasi -->
+        <div class="product-card">
+          <div class="product-illustration">
+            <i
+              class="fas fa-tshirt"
+              style="font-size: 5rem; color: #2e7d5e"
+            ></i>
+          </div>
+          <span class="product-category">Jaket Denim</span>
+          <div class="product-name">Jaket Denim Vintage</div>
+          <div class="product-price">Rp329.000</div>
+          <div class="rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i
+            ><i class="fas fa-star"></i><i class="fas fa-star"></i
+            ><i class="fas fa-star-half-alt"></i>
+            <span>(4.7 · 56)</span>
+          </div>
+          <button class="btn-add">
+            <i class="fas fa-cart-plus"></i> Keranjang
+          </button>
+        </div>
+      </div>
+
+      <!-- Flash Sale dengan tema hijau -->
+      <div class="flashsale">
+        <div class="flash-header">
+          <i class="fas fa-bolt"></i>
+          <h3
+            style="
+              font-size: 1.8rem;
+              font-weight: 800;
+              color: var(--green-dark);
+            "
+          >
+            Flash Sale
+          </h3>
+          <span
+            style="
+              background: #0e6b4e;
+              color: white;
+              padding: 6px 18px;
+              border-radius: 40px;
+              font-weight: 700;
+            "
+            >Berakhir 08:23:45</span
+          >
+        </div>
+        <!-- Grid produk flashsale (ilustrasi pakaian lainnya) -->
+        <div class="product-grid">
+          <div class="product-card">
+            <div class="product-illustration">
+              <i
+                class="fas fa-hat-cowboy"
+                style="font-size: 5rem; color: #0e6b4e"
+              ></i>
+            </div>
+            <span class="product-category">Topi</span>
+            <div class="product-name">Cap Trucker Hijau Daun</div>
+            <div class="product-price">Rp89.000 <span>Rp150.000</span></div>
+            <button class="btn-add">
+              <i class="fas fa-cart-plus"></i> Keranjang
+            </button>
+          </div>
+          <div class="product-card">
+            <div class="product-illustration">
+              <i
+                class="fas fa-socks"
+                style="font-size: 5rem; color: #1e8a5e"
+              ></i>
+            </div>
+            <span class="product-category">Kaos Kaki</span>
+            <div class="product-name">Sox Pattern 3 pasang</div>
+            <div class="product-price">Rp49.000</div>
+            <button class="btn-add">
+              <i class="fas fa-cart-plus"></i> Keranjang
+            </button>
+          </div>
+          <div class="product-card">
+            <div class="product-illustration">
+              <i
+                class="fas fa-shoe-prints"
+                style="font-size: 5rem; color: #0a4638"
+              ></i>
+            </div>
+            <span class="product-category">Sepatu</span>
+            <div class="product-name">Canvas Sneaker Army</div>
+            <div class="product-price">Rp189.000</div>
+            <button class="btn-add">
+              <i class="fas fa-cart-plus"></i> Keranjang
+            </button>
+          </div>
+          <div class="product-card">
+            <div class="product-illustration">
+              <i
+                class="fas fa-bag-shopping"
+                style="font-size: 5rem; color: #2e7d5e"
+              ></i>
+            </div>
+            <span class="product-category">Tas</span>
+            <div class="product-name">Tote Bag Kanvas</div>
+            <div class="product-price">Rp109.000</div>
+            <button class="btn-add">
+              <i class="fas fa-cart-plus"></i> Keranjang
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kategori pakaian lainnya dengan ilustrasi -->
+      <div class="section-title">
+        <h3>Koleksi Pria</h3>
+        <a href="#">Lainnya</a>
+      </div>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-illustration">
+            <i class="fas fa-vest" style="font-size: 5rem; color: #0e6b4e"></i>
+          </div>
+          <span class="product-category">Kemeja Flanel</span>
+          <div class="product-name">Flanel Kotak-kotak</div>
+          <div class="product-price">Rp135.000</div>
+          <button class="btn-add">
+            <i class="fas fa-cart-plus"></i> Keranjang
+          </button>
+        </div>
+        <div class="product-card">
+          <div class="product-illustration">
+            <i
+              class="fas fa-tshirt"
+              style="font-size: 5rem; color: #1e8a5e"
+            ></i>
+          </div>
+          <span class="product-category">Kaos Polos</span>
+          <div class="product-name">Kaos Combed 30s</div>
+          <div class="product-price">Rp59.000</div>
+          <button class="btn-add">
+            <i class="fas fa-cart-plus"></i> Keranjang
+          </button>
+        </div>
+        <div class="product-card">
+          <div class="product-illustration">
+            <i
+              class="fas fa-hoodie"
+              style="font-size: 5rem; color: #0a4638"
+            ></i>
+          </div>
+          <span class="product-category">Sweater</span>
+          <div class="product-name">Sweater Rajut</div>
+          <div class="product-price">Rp189.000</div>
+          <button class="btn-add">
+            <i class="fas fa-cart-plus"></i> Keranjang
+          </button>
+        </div>
+        <div class="product-card">
+          <div class="product-illustration">
+            <i
+              class="fas fa-umbrella-beach"
+              style="font-size: 5rem; color: #2e7d5e"
+            ></i>
+          </div>
+          <span class="product-category">Santai</span>
+          <div class="product-name">Celana Pendek</div>
+          <div class="product-price">Rp99.000</div>
+          <button class="btn-add">
+            <i class="fas fa-cart-plus"></i> Keranjang
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer dengan nuansa hijau -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h5>GreenStyle</h5>
+            <a href="#">Tentang Kami</a>
+            <a href="#">Kebijakan</a>
+            <a href="#">Syarat & Ketentuan</a>
+            <a href="#">Karir</a>
+          </div>
+          <div class="footer-col">
+            <h5>Layanan</h5>
+            <a href="#">Pusat Bantuan</a>
+            <a href="#">Pengembalian</a>
+            <a href="#">Garansi Hijau</a>
+            <a href="#">Blog</a>
+          </div>
+          <div class="footer-col">
+            <h5>Kategori</h5>
+            <a href="#">Pria</a>
+            <a href="#">Wanita</a>
+            <a href="#">Anak</a>
+            <a href="#">Aksesoris</a>
+          </div>
+          <div class="footer-col">
+            <h5>Ikuti Kami</h5>
+            <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+            <a href="#"><i class="fab fa-tiktok"></i> TikTok</a>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>
+            © 2025 GreenStyle — Belanja pakaian ramah lingkungan. Semua
+            ilustrasi produk tanpa wajah.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Keranjang floating -->
+    <div class="cart-float">
+      <i class="fas fa-shopping-cart"></i>
+    </div>
+
+    <!-- JavaScript interaktif ringan, search simulation, responsive touch -->
+    <script>
+      (function () {
+        // Animasi / interaksi sederhana ala Tokopedia
+        const searchInput = document.getElementById("searchInput");
+        const searchBtn = document.querySelector(".search-box button");
+
+        // Fungsi pencarian simulasi
+        function performSearch() {
+          let query = searchInput.value.trim();
+          if (query) {
+            alert(
+              'Mencari produk: "' +
+                query +
+                '"\n(Fitur demo - dalam pengembangan)',
+            );
+          } else {
+            alert("Silakan masukkan nama pakaian");
+          }
+        }
+
+        if (searchBtn) {
+          searchBtn.addEventListener("click", performSearch);
+        }
+        if (searchInput) {
+          searchInput.addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+              performSearch();
+            }
+          });
+        }
+
+        // Klik kategori (simulasi)
+        const categories = document.querySelectorAll(".category-item");
+        categories.forEach((cat) => {
+          cat.addEventListener("click", function () {
+            categories.forEach((c) => c.classList.remove("active"));
+            this.classList.add("active");
+          });
+        });
+
+        // Tombol keranjang pada card
+        const addButtons = document.querySelectorAll(".btn-add");
+        addButtons.forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            const productName =
+              this.closest(".product-card")?.querySelector(".product-name")
+                ?.innerText || "Produk";
+            this.innerHTML = '<i class="fas fa-check"></i> Ditambahkan';
+            this.style.background = "#0e6b4e";
+            this.style.color = "white";
+            setTimeout(() => {
+              this.innerHTML = '<i class="fas fa-cart-plus"></i> Keranjang';
+              this.style.background = "var(--green-soft)";
+              this.style.color = "var(--green-primary)";
+            }, 1500);
+          });
+        });
+
+        // Floating cart click
+        const cartFloat = document.querySelector(".cart-float");
+        if (cartFloat) {
+          cartFloat.addEventListener("click", function () {
+            alert(
+              "Keranjang belanja (demo) — kamu menambahkan beberapa item hijau.",
+            );
+          });
+        }
+
+        // inisialisasi kecil
+        console.log(
+          "GreenStyle — Tokopedia pakaian tema hijau, tanpa wajah ilustrasi.",
+        );
+      })();
+    </script>
+
+    <!-- Catatan: seluruh ikon adalah fontawesome versi 6. 
+         Tidak ada gambar wajah, semua produk menggunakan ilustrasi ikon pakaian (vest, tshirt, hoodie, hat, sepatu, tas, kaus kaki, dll) -->
+  </body>
+</html>

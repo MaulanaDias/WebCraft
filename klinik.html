@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <meta name="description" content="Klinik Gigi Modern DentaCare - Perawatan gigi profesional dengan teknologi terkini dan tim dokter berpengalaman.">
+  <title>DentaCare · Klinik Gigi Modern</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 (ikon profesional) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    /* ---------- VARIABEL & RESET ---------- */
+    :root {
+      --primary: #0a620a;       /* biru tua elegan */
+      --secondary: #53a55e;     /* biru abu */
+      --accent: #0deb32;        /* biru cerah modern */
+      --light: #f0fff2;         /* biru sangat muda */
+      --dark: #2c3e50;         /* abu tua untuk teks */
+      --gray: #7f8c8d;
+      --white: #ffffff;
+      --shadow-sm: 0 8px 20px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.02);
+      --shadow-md: 0 12px 30px rgba(0,0,0,0.06);
+      --radius: 20px;
+      --radius-sm: 12px;
+      --transition: all 0.25s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background-color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ---------- REUSABLE ---------- */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 16px;
+      color: var(--primary);
+      letter-spacing: -0.01em;
+    }
+
+    .section-subhead {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto 60px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 32px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      background: transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 8px 18px rgba(9, 132, 227, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: #0873c4;
+      transform: translateY(-3px);
+      box-shadow: 0 14px 24px rgba(9, 132, 227, 0.25);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      background: transparent;
+      padding: 10px 28px;
+    }
+
+    .btn-outline:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    /* ---------- NAVIGASI MODERN ---------- */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 5%;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      color: var(--dark);
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--accent);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0%;
+      height: 2.5px;
+      background: var(--accent);
+      transition: 0.2s;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .btn-nav {
+      background: var(--accent);
+      color: white;
+      padding: 10px 26px;
+      border-radius: 40px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .btn-nav:hover {
+      background: #0873c4;
+      transform: scale(1.02);
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    /* ---------- HERO SECTION ---------- */
+    .hero {
+      display: flex;
+      align-items: center;
+      min-height: 85vh;
+      background: linear-gradient(145deg, #f6fbff 0%, #ebf4ff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero .container {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-size: 3.4rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--primary);
+      margin-bottom: 24px;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: var(--secondary);
+      margin-bottom: 36px;
+      max-width: 550px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-icon {
+      font-size: 15rem;
+      color: var(--accent);
+      opacity: 0.8;
+      filter: drop-shadow(0 10px 20px rgba(9,132,227,0.15));
+      animation: float 5s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* ---------- LAYANAN ---------- */
+    .services {
+      background: white;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 40px 20px 35px;
+      border-radius: var(--radius);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent);
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+
+    .service-card p {
+      color: var(--gray);
+      font-size: 0.98rem;
+    }
+
+    /* ---------- TENTANG KLINIK ---------- */
+    .about {
+      background: var(--light);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-content h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 24px;
+    }
+
+    .about-content p {
+      margin-bottom: 28px;
+      color: var(--dark);
+      font-size: 1.06rem;
+    }
+
+    .about-feature {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 18px;
+    }
+
+    .about-feature i {
+      font-size: 1.6rem;
+      color: var(--accent);
+      width: 40px;
+    }
+
+    .about-feature span {
+      font-weight: 500;
+    }
+
+    .about-image {
+      display: flex;
+      justify-content: center;
+    }
+
+    .about-icon {
+      font-size: 14rem;
+      color: var(--accent);
+      opacity: 0.6;
+    }
+
+    /* ---------- DOKTER TIM ---------- */
+    .team {
+      background: white;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 35px;
+    }
+
+    .doctor-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 30px 20px 30px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #f0f0f0;
+    }
+
+    .doctor-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .doctor-avatar {
+      font-size: 5rem;
+      color: var(--secondary);
+      margin-bottom: 15px;
+    }
+
+    .doctor-card h4 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .doctor-title {
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    .doctor-desc {
+      color: var(--gray);
+      font-size: 0.95rem;
+      padding: 0 8px;
+    }
+
+    /* ---------- TESTIMONIAL ---------- */
+    .testimonials {
+      background: linear-gradient(145deg, #f3f9ff, #eaf3fa);
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .testimonial-card {
+      background: white;
+      padding: 35px 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .testimonial-card:hover {
+      transform: scale(1.01);
+      box-shadow: var(--shadow-md);
+    }
+
+    .testimonial-rating {
+      color: #fbbf24;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      color: var(--dark);
+      margin-bottom: 25px;
+      font-size: 1.02rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .author-avatar {
+      font-size: 2.6rem;
+      color: var(--accent);
+    }
+
+    .author-info h5 {
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .author-info p {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    /* ---------- KONTAK ---------- */
+    .contact {
+      background: white;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .contact-info h3 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 30px;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .contact-detail i {
+      font-size: 2rem;
+      color: var(--accent);
+      width: 45px;
+    }
+
+    .contact-detail p {
+      font-size: 1.08rem;
+      color: var(--dark);
+    }
+
+    .contact-form {
+      background: var(--light);
+      padding: 40px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 16px 20px;
+      border: 1px solid #e2e8f0;
+      border-radius: 30px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      transition: var(--transition);
+      background: white;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(9, 132, 227, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .contact-form .btn-primary {
+      width: 100%;
+      padding: 16px;
+      font-size: 1.1rem;
+    }
+
+    /* ---------- FOOTER ---------- */
+    .footer {
+      background: var(--primary);
+      color: white;
+      padding: 50px 5% 30px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .footer-logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .footer-logo span {
+      color: #8ec6ff;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 26px;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.6rem;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .footer-copy {
+      margin-top: 45px;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.95rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 30px;
+    }
+
+    /* ---------- RESPONSIVE BREAKPOINTS ---------- */
+    @media screen and (max-width: 1024px) {
+      .hero .container { grid-template-columns: 1fr; text-align: center; }
+      .hero-content p { margin-left: auto; margin-right: auto; }
+      .hero-buttons { justify-content: center; }
+      .hero-image { grid-row: 1; margin-bottom: 20px; }
+      .service-grid { grid-template-columns: repeat(2, 1fr); }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; text-align: center; }
+      .about-feature { justify-content: center; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media screen and (max-width: 768px) {
+      section { padding: 70px 0; }
+      .section-title { font-size: 1.9rem; }
+      .navbar { padding: 15px 5%; }
+      .nav-menu {
+        position: fixed;
+        top: 78px;
+        left: -100%;
+        width: 100%;
+        height: auto;
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 40px 0;
+        gap: 30px;
+        box-shadow: 0 20px 30px rgba(0,0,0,0.05);
+        transition: left 0.35s ease;
+        border-radius: 0 0 30px 30px;
+      }
+      .nav-menu.active {
+        left: 0;
+      }
+      .nav-link { font-size: 1.2rem; }
+      .btn-nav { display: inline-block; }
+      .hamburger { display: block; }
+      .hero-content h1 { font-size: 2.5rem; }
+      .hero-icon { font-size: 12rem; }
+      .service-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .footer-content { flex-direction: column; }
+    }
+
+    @media screen and (max-width: 480px) {
+      .hero-content h1 { font-size: 2.1rem; }
+      .btn { padding: 10px 24px; }
+      .contact-form { padding: 30px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVIGASI STICKY + BLUR -->
+  <nav class="navbar">
+    <div class="logo">Denta<span>Care</span></div>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#services" class="nav-link">Layanan</a></li>
+      <li><a href="#about" class="nav-link">Tentang</a></li>
+      <li><a href="#doctors" class="nav-link">Dokter</a></li>
+      <li><a href="#contact" class="nav-link">Kontak</a></li>
+      <li><a href="#contact" class="btn-nav"><i class="fas fa-calendar-check" style="margin-right: 8px;"></i>Appointment</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <i class="fas fa-bars"></i>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Senyum Sehat, Hidup Lebih Percaya Diri</h1>
+        <p>Klinik gigi modern dengan teknologi digital, tim dokter spesialis, dan suasana nyaman. Perawatan tanpa rasa cemas.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary"><i class="fas fa-calendar-alt" style="margin-right: 10px;"></i>Buat Janji</a>
+          <a href="#services" class="btn btn-outline">Lihat Layanan</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <i class="fas fa-tooth hero-icon"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYANAN UNGGULAN -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2 class="section-title">Layanan Spesialis Kami</h2>
+      <p class="section-subhead">Ditangani dokter gigi berpengalaman dengan alat berstandar internasional.</p>
+      <div class="service-grid">
+        <div class="service-card">
+          <i class="fas fa-brush service-icon"></i>
+          <h3>Skaling & Poles</h3>
+          <p>Bersihkan karang gigi dan noda membandel, napas segar, gigi kinclong.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-whitening service-icon"></i>
+          <h3>Bleaching</h3>
+          <p>Whitening instan dengan bahan aman, senyum 4x lebih putih dalam 1 kunjungan.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-implants service-icon"></i>
+          <h3>Implan Gigi</h3>
+          <p>Solusi permanen untuk gigi hilang, tampak dan terasa seperti gigi asli.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-braces service-icon"></i>
+          <h3>Behel & Ortodonti</h3>
+          <p>Meratakan gigi dengan behel metal, keramik, atau clear aligner.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TENTANG KLINIK -->
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div class="about-content">
+        <h2>Modern, Steril, dan Ramah</h2>
+        <p>DentaCare hadir untuk mengubah pengalaman perawatan gigi Anda. Klinik kami didesain dengan interior menenangkan, peralatan digital mutakhir (CBCT, laser, intraoral scanner), serta protokol sterilisasi ketat.</p>
+        <div class="about-feature">
+          <i class="fas fa-shield-alt"></i>
+          <span>Sterilisasi alat standar rumah sakit</span>
+        </div>
+        <div class="about-feature">
+          <i class="fas fa-user-md"></i>
+          <span>Tim dokter spesialis lulusan dalam & luar negeri</span>
+        </div>
+        <div class="about-feature">
+          <i class="fas fa-couch"></i>
+          <span>Ruang perawatan nyaman, bebas bau obat</span>
+        </div>
+        <a href="#contact" class="btn btn-primary" style="margin-top: 20px;">Kunjungi Klinik</a>
+      </div>
+      <div class="about-image">
+        <i class="fas fa-stethoscope about-icon"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIM DOKTER SPESIALIS -->
+  <section class="team" id="doctors">
+    <div class="container">
+      <h2 class="section-title">Tim Dokter Spesialis</h2>
+      <p class="section-subhead">Ditangani oleh dokter gigi berpengalaman yang hangat dan komunikatif.</p>
+      <div class="team-grid">
+        <div class="doctor-card">
+          <i class="fas fa-user-circle doctor-avatar"></i>
+          <h4>drg. Andini P.</h4>
+          <div class="doctor-title">Sp.Ort (Ortodonti)</div>
+          <p class="doctor-desc">Ahli meratakan gigi, behel, dan clear aligner. Lulusan UI, aktif di internasional ortho forum.</p>
+        </div>
+        <div class="doctor-card">
+          <i class="fas fa-user-circle doctor-avatar"></i>
+          <h4>drg. Reza H.</h4>
+          <div class="doctor-title">Sp.BM (Bedah Mulut)</div>
+          <p class="doctor-desc">Spesialis implan gigi, pencabutan gigi bungsu, dan bedah minimal invasif.</p>
+        </div>
+        <div class="doctor-card">
+          <i class="fas fa-user-circle doctor-avatar"></i>
+          <h4>drg. Maya S.</h4>
+          <div class="doctor-title">Sp.KG (Konservasi)</div>
+          <p class="doctor-desc">Ahli tambal estetik, veneer, dan perawatan saluran akar tanpa sakit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL PASIEN -->
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="section-title">Apa Kata Pasien</h2>
+      <p class="section-subhead">Lebih dari 1500+ pasien puas dan tersenyum lebar.</p>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Kliniknya bersih banget, dokternya sabar menjelaskan. Baru kali ini ke dokter gigi nggak deg-degan. Scaling-nya cepat dan nggak sakit."</p>
+          <div class="testimonial-author">
+            <i class="fas fa-user-circle author-avatar"></i>
+            <div class="author-info">
+              <h5>Sarah Wijaya</h5>
+              <p>Pasien scaling</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Pasang implan di sini prosesnya cepat, gak sakit seperti yang dibayangkan. Hasilnya rapi, teman pada nggak sadar kalau gigi palsu."</p>
+          <div class="testimonial-author">
+            <i class="fas fa-user-circle author-avatar"></i>
+            <div class="author-info">
+              <h5>Dimas Pratama</h5>
+              <p>Implan gigi</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Behel 1,5 tahun, hasilnya memuaskan. Dokter Andini komunikatif banget, biaya juga jelas. Resepsionis ramah, recommended!"</p>
+          <div class="testimonial-author">
+            <i class="fas fa-user-circle author-avatar"></i>
+            <div class="author-info">
+              <h5>Nadia Kirana</h5>
+              <p>Perawatan ortodonti</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAK & JANJI TEMU -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Hubungi Kami</h3>
+          <div class="contact-detail">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>Jl. Gatot Subroto No.28, Jakarta Selatan<br>  (Belok kiri dari mal Pasific Place)</p>
+          </div>
+          <div class="contact-detail">
+            <i class="fas fa-phone-alt"></i>
+            <p>+62 21 3950 8844 <br> +62 812 8888 6612 (WA)</p>
+          </div>
+          <div class="contact-detail">
+            <i class="fas fa-envelope"></i>
+            <p>care@dentacare.id <br> www.dentacare.id</p>
+          </div>
+          <div class="contact-detail">
+            <i class="fas fa-clock"></i>
+            <p>Senin - Sabtu: 09.00 - 20.00<br> Minggu & libur nasional: 10.00 - 16.00</p>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3 style="color: var(--primary); margin-bottom: 28px; font-weight: 700;">Booking Online</h3>
+          <form id="appointmentForm">
+            <div class="form-group">
+              <input type="text" placeholder="Nama Lengkap" required>
+            </div>
+            <div class="form-group">
+              <input type="tel" placeholder="Nomor WhatsApp" required>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Email (opsional)">
+            </div>
+            <div class="form-group">
+              <select style="width: 100%; padding: 16px 20px; border-radius: 30px; border: 1px solid #e2e8f0; background: white; font-family: 'Inter'; color: var(--dark);" required>
+                <option value="" disabled selected>Pilih layanan</option>
+                <option>Skaling & Poles</option>
+                <option>Bleaching</option>
+                <option>Implan Gigi</option>
+                <option>Behel / Ortodonti</option>
+                <option>Konsultasi umum</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <textarea placeholder="Tulis keluhan atau tanggal yang diinginkan..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane" style="margin-right: 8px;"></i>Kirim Permintaan</button>
+            <p style="margin-top: 16px; font-size: 0.85rem; color: var(--gray);">*Admin akan mengkonfirmasi via WA maks. 2 jam</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER ELEGAN -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">Denta<span>Care</span></div>
+      <p style="max-width: 350px; color: rgba(255,255,255,0.9);">Menciptakan senyum sehat dan indah dengan sentuhan modern & manusiawi.</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-copy">
+      © 2025 DentaCare Dental Clinic. All rights reserved. | Designed with <i class="fas fa-heart" style="color: #ff6b6b;"></i> for healthy smiles.
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT: HAMBURGER MENU + SUBMIT ALERT -->
+  <script>
+    // ========== TOGGLE NAVIGASI MOBILE ==========
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+
+    hamburger.addEventListener('click', function() {
+      navMenu.classList.toggle('active');
+      // Ubah ikon hamburger saat menu terbuka
+      const icon = hamburger.querySelector('i');
+      if (navMenu.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+
+    // Tutup menu ketika link diklik (untuk mobile)
+    const navLinks = document.querySelectorAll('.nav-link, .btn-nav');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+          navMenu.classList.remove('active');
+          const icon = hamburger.querySelector('i');
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
+      });
+    });
+
+    // ========== HANDLE FORM BOOKING (demo) ==========
+    const form = document.getElementById('appointmentForm');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Terima kasih! Permintaan janji temu Anda telah dikirim. Admin DentaCare akan segera menghubungi via WA.');
+        form.reset();
+      });
+    }
+
+    // ========== SMOOTH HOVER EFK (minor) ==========
+    // (opsional) tambah class active di navbar saat scroll - tidak wajib, tapi menambah kesan dinamis.
+    // biar lebih modern, kita tambahin sedikit highlight di menu sesuai section.
+    window.addEventListener('scroll', function() {
+      // simple active section highlight (bonus)
+      let sections = document.querySelectorAll('section');
+      let navLinks = document.querySelectorAll('.nav-link');
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // sedikit tambahan style untuk active class di nav-link (bisa ditambahin di css kalau mau)
+    // inject styling via JS atau sudah ada? kita tambahin style aktif beda warna.
+    const styleActive = document.createElement('style');
+    styleActive.innerHTML = `
+      .nav-link.active {
+        color: var(--accent) !important;
+        font-weight: 600;
+      }
+      .nav-link.active::after {
+        width: 100%;
+      }
+    `;
+    document.head.appendChild(styleActive);
+  </script>
+</body>
+</html>
